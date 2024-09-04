@@ -47,7 +47,7 @@ print(tensor)
 tensor = torch.arange(10).reshape(5, 2)
 print("split")
 print(tensor)
-tensor = torch.split(tensor, 2)
+tensor = torch.split(tensor, 2)  # 切割张量
 print(tensor)
 
 tensor = torch.arange(6).reshape(3, 2)
@@ -55,13 +55,48 @@ print("squeeze")
 print(tensor)
 tensor = torch.reshape(tensor, [3, 1, 2])
 print(tensor)
-tensor = torch.squeeze(tensor, dim=1)
+tensor = torch.squeeze(tensor, dim=1)  # 减少维度
 print(tensor)
 
 tensor2 = torch.randn(3, 2)
 tensor = torch.stack([tensor2, tensor])
 print("stack")
 print(tensor, tensor.shape)
+
+a = torch.tile(tensor, [2, 1])  # 复制  行(2, 1) 列(1, 2)
+print("tile")
+print(a)
+
+tensor = torch.arange(6).reshape(3, 2)
+print("transpose")
+print(tensor)
+tensor = torch.transpose(tensor, 0, 1)
+print(tensor)
+
+tensor = torch.unbind(tensor, dim=1)  # 对于某个维度，按这个维度拆成多个小张量，小张量比原来降了一个维度
+print("unbind")
+print(tensor)
+
+tensor = torch.arange(6).reshape(3, 2)
+print(tensor)
+tensor = torch.unsqueeze(tensor, 0)  # 增加维度
+print("unsqueeze")
+print(tensor, tensor.shape)
+
+x = torch.tensor([[1, 2, 3], [3, 4, 5], [5, 6, 7]])
+y = torch.tensor([[5, 6, 7], [7, 8, 9], [9, 10, 11]])
+z = torch.where(x > 5, x, y)  # 根据条件，也就是condition，返回从x或y中选择的元素的张量根据条件，也就是condition，返回从x或y中选择的元素的张量
+print("where")
+print(z)
+
+torch.manual_seed(seed=23)  # 设置随机种子
+
+tensor = torch.rand(3, 3)
+print(tensor)
+tensor = torch.bernoulli(tensor)
+print("bernoulli")
+print(tensor)
+
 
 
 def block_transpose(matrix, block_size):
