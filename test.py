@@ -5,8 +5,8 @@ from PIL import Image
 image_path = "imgs/dog.png"
 image = Image.open(image_path)
 
-dict_sample = {0: 'airplane', 1: 'automobile', 2: 'bird', 3: 'cat',4: 'deer',5: 'dog',6: 'frog',7: 'horse',
-               8: 'ship',9: 'truck'}
+dict_sample = {0: 'airplane', 1: 'automobile', 2: 'bird', 3: 'cat', 4: 'deer', 5: 'dog', 6: 'frog', 7: 'horse',
+               8: 'ship', 9: 'truck'}
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 # Resize the image to 224x224
 image = image.resize((224, 224))
